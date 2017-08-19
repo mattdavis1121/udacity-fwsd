@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='signup-form form'>
+    <h1>User Registration</h1>
+    <form method="post" action="">
+        <label>Username <input type="text" name="username" value={{username}}></label>
+        <p>{{error_username}}</p>
+        <label>Password <input type="password" name="password" value=""></label>
+        <p>{{error_password}}</p>
+        <label>Verify Password <input type="password" name="verify-password" value=""></label>
+        <p>{{error_verify}}</p>
+        <label>Email (optional) <input type="text" name="email" value={{email}}></label>
+        <p>{{error_email}}</p>
+        <input type="submit">
+    </form>
+</div>
+<a href='/blog/login'>Already registered? Log in!</a>
+{% endblock %}

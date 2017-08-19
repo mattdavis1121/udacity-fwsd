@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }} - Udacity FSWD</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/grid.css" rel="stylesheet">
+    <script src="/js/local.js"></script>
+
+    <!-- Markdown editor  and Moment.js UNUSED
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    -->
+</head>
+<body>
+<header>
+    <div class=container>
+        <a href='/blog'>
+            <div class="logo">
+                <h1>Blog</h1>
+            </div>
+        </a>
+        <div class='links'>
+            <a href="/blog/newpost">New Post</a>
+            {% if user %}
+            <a href="/blog/logout">Log Out</a>
+            <a href="/blog/account">{{ user.name }}</a>
+            {% else %}
+            <a href="/blog/login">Log In</a>
+            <a href="/blog/signup">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <!--Begin block content-->
+        {% block content %}
+        {% endblock %}
+        <!--End block content-->
+    </div>
+</main>
+</body>
+</html>

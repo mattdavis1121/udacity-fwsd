@@ -1,0 +1,251 @@
+/*
+    Declare color variables so I don't
+    have to change them in a bunch of
+    different spots. Is this allowed?
+ */
+:root {
+    --primary-color: #021931;
+    --accent-color: #B96F00;
+    --dark-gray: #2e353c;
+    --light-gray: #afb6bd;
+}
+
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.banner {
+    height: 86%;
+    background-color: var(--primary-color);;
+    margin-bottom: 2%;
+    color: var(--light-gray);
+}
+
+.container {
+    height: auto;
+    margin: 0 auto 0;
+}
+
+.banner > .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#card {
+    text-align: center;
+}
+
+#name {
+    vertical-align: middle;
+}
+
+#name h1 {
+    text-transform: uppercase;
+    font-size: 84px;
+    margin-bottom: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#name h2 {
+    text-transform: lowercase;
+    font-size: 48px;
+    margin-top: 0;
+    color: var(--accent-color);
+    font-family: 'Domine', serif;
+}
+
+.img-placeholder {
+    height: 300px;
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
+#projects-header {
+    justify-content: center;
+}
+
+#projects-header > h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 48px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-gray);
+}
+
+.project {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*
+    Flip order of project-image and project-text
+    every other project
+ */
+.project:nth-child(even) > .project-text{
+    order: -1;
+}
+
+.project-image {
+    padding: 0 2% 0;
+}
+
+.project-text {
+    padding: 0 2% 0;
+    color: var(--dark-gray);
+}
+
+.project-title {
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.project-description {
+    font-size: 18px;
+    font-family: 'Domine', serif;
+    line-height: 24px;
+}
+
+.code-embed {
+    padding: 0 2% 0;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.full-width {
+    background-color: var(--light-gray);
+}
+
+/*
+    Keeping this for later. Allows
+    for styling embedded gists. Makes
+    code scrollable
+ */
+.gist-data {max-height: 200px;}
+
+/*
+    Responsive styles
+ */
+
+@media screen and (max-width: 500px){
+    .banner {
+        height: 50%;
+    }
+    #name h1 {
+        font-size: 48px;
+    }
+
+    #name h2 {
+        font-size: 24px;
+    }
+    .project-title {
+        font-size: 18px;
+    }
+    .project-text {
+        order: 1;
+        width: 100%;
+    }
+    .project-image {
+        order: 2;
+        width: 100%;
+    }
+    .project-description {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    #projects-header > h2 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 501px) and (max-width: 600px){
+    .banner {
+        height: 70%;
+    }
+    #name h1 {
+        font-size: 60px;
+    }
+
+    #name h2 {
+        font-size: 32px;
+    }
+    .project-title {
+        font-size: 18px;
+    }
+    .project-text {
+        order: 1;
+        width: 100%;
+    }
+    .project-image {
+        order: 2;
+        width: 100%;
+    }
+    .project-description {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    #projects-header > h2 {
+        font-size: 32px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1100px){
+    .banner {
+        height: 70%;
+    }
+    #name h1 {
+        font-size: 60px;
+    }
+
+    #name h2 {
+        font-size: 32px;
+    }
+    .project-title {
+        font-size: 22px;
+    }
+    .project-text {
+        width: 50%;
+    }
+    .project-image {
+        width: 50%;
+    }
+    .project-description {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    #projects-header > h2 {
+        font-size: 32px;
+    }
+}
+
+@media screen and (min-width: 850px) and (max-width: 1100px) {
+    #name h1 {
+        font-size: 72px;
+    }
+    #name h2 {
+        font-size: 40px;
+    }
+    .project-title {
+        font-size: 30px;
+    }
+    .project-description {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    #projects-header > h2 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (min-width: 1101px) {
+    .container {
+        max-width: 1100px;
+    }
+}

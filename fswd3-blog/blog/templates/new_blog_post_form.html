@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='new-post-form form'>
+    <form method="post" action="">
+        <label>
+            {% if post %}
+            <div>Edit your post below</div>
+            <input type="hidden" name="post_key" value="{{ post.key.urlsafe() }}">
+            {% else %}
+            <div>Enter your post below</div>
+            {% endif %}
+            <textarea name="submission" placeholder="What's on your mind?">{{ post.text }}</textarea><br>
+        </label>
+        <input type="submit">
+        <a href='/blog'>Cancel</a>
+    </form>
+    {% if post %}
+    <a href='/blog/deletepost/{{ post.key.urlsafe() }}'<button class="danger">Delete Post (Irreversible)</button>
+    {% endif %}
+</div>
+
+<!-- Markdown editor - Unused
+<script>
+var simplemde = new SimpleMDE();
+</script> -->
+{% endblock %}

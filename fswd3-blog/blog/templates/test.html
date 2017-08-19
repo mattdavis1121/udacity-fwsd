@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<button onclick='increment(this)'>1</button>
+
+<script>
+function increment(obj) {
+    curr = parseInt(obj.textContent);
+    obj.textContent = curr + 1;
+}
+</script>
+
+<!-- <script>
+function myFunction() {
+    var x = document.getElementById('1');
+    var y = document.getElementById('2');
+    if (y.style.display === 'none') {
+        y.style.display = 'block';
+    } else {
+        y.style.display = 'none';
+    }
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+<script>
+function my2(obj) {
+    obj.style.display = 'none';
+}
+</script> -->
+{% endblock %}}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="blog-post">
+    <div class="author-card card col-2">
+        {{ post.get_author().name }}</br>
+        {{ post.date|blogpost_datetime_format }}</br>
+        {% if post.is_by_user(user) %}
+    </br><a href='/blog/newpost?post_key={{ post.key.urlsafe() }}'>Edit</a>
+        {% endif %}
+        {{ post.get_likes() }}
+    </div>
+    <div class="blog-post-card card col-10">{{ post.text }}</div>
+</div>
+{% if not post.is_by_user(user) %}
+    {% if post.liked_by_user(user) %}
+        <div class='response'>Voted!</div>
+    {% else %}
+    <div class='response'>
+        <form method="post" action="">
+            <input type="hidden" name="post_key" value="{{ post.key.urlsafe() }}">
+            <button type="submit" name="like-val" value=1>Like</button>
+            <button type="submit" name="like-val" value=-1>Dislike</button>
+        </form>
+    </div>
+    {% endif %}
+{% endif %}
+<div class='comments'>
+    <div class='new-comment'>
+        <form method="post" action="/blog/newcomment">
+            <div>Leave a comment</div>
+            <input type="hidden" name="post_key" value="{{ post.key.urlsafe() }}">
+            <textarea name="comment" placeholder="Great post!"></textarea>
+            <input type="submit">
+        </form>
+    </div>
+    <div class='comments-list'>
+        {% for comment in post.get_comments() %}
+        <div id="comment|{{ comment.key.urlsafe() }}" class='comment card'>
+            <div class='comment-text'>
+                {{ comment.text }}
+            </div>
+            <div class='comment-meta'>
+                {{ comment.get_author().name }}<br>
+                {{ comment.date|blogpost_datetime_format }}<br>
+                {% if comment.is_by_user(user) %}
+                    <button type="button" class="edit-btn" onclick="toggleVisibility('{{ comment.key.urlsafe() }}')">Edit</button>
+                {% endif %}
+            </div>
+        </div>
+        {% if comment.is_by_user(user) %}
+            <div id="edit|{{ comment.key.urlsafe() }}" class="comment-edit" style="display: none;">
+                <form method="post" action="/blog/editcomment">
+                    <input type="hidden" name="comment_key" value="{{ comment.key.urlsafe() }}">
+                    <textarea name="edit">{{ comment.text }}</textarea>
+                    <input type="submit">
+                </form>
+                <form method="post" action="/blog/deletecomment">
+                    <input type="hidden" name="comment_key" value="{{ comment.key.urlsafe() }}">
+                    <button class="danger" type="submit">Delete</button>
+                </form>
+                <button type="button" class="cancel-btn" onclick="toggleVisibility('{{ comment.key.urlsafe() }}')">Cancel</button>
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}}

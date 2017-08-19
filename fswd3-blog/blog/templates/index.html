@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for post in posts %}
+<div class="blog-post">
+    <div class="author-card card col-2">
+        {{ post.get_author().name }}</br>
+        {{ post.date|blogpost_datetime_format }}</br>
+        <a href="/blog/{{ post.key.urlsafe() }}">Read more</a>
+        {% if post.is_by_user(user) %}
+        </br><a href='/blog/edit/{{ post.key.urlsafe() }}'>Edit</a>
+        {% endif %}
+        </br>{{ post.get_likes()}}
+    </div>
+    <div class="blog-post-card card col-10">{{ post.text }}</div>
+</div>
+{% endfor %}
+{% endblock %}}

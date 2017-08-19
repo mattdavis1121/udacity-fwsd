@@ -1,0 +1,137 @@
+html, body {
+    height: 100.1%;     /*Force scrollbar on all pages to avoid content shift*/
+    width: 100%;
+    margin: 0;
+    background-color: #fafbfc;
+}
+
+/* This is from my last project -- needed?
+/*.container {
+    height: auto;
+    margin: 0 auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}*/
+
+header {
+    height: 50px;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-end;
+    background-color: white;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    /*justify-content: center;
+    align-items: center;*/
+    margin: 0 auto 0;
+}
+
+header > .container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    justify-content: flex-start;
+}
+
+.links {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.links > a {
+    padding: 0px 10px 0px;
+}
+
+main {
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    box-shadow: 2px 2px 5px #333;
+    border-radius: 3px;
+}
+
+.blog-post {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.author-card {
+    background: white;
+    margin-right: 20px;
+    padding: 5px;
+}
+
+.blog-post-card {
+    white-space: pre-wrap;
+    padding: 5px;
+    background-color: white;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    justify-content: center;
+}
+
+.comment {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.comment-meta {
+}
+
+.comment-text {
+}
+
+.comment-edit {
+}
+
+.logo > h1 {
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form form {
+    width: 80%;
+}
+
+.form input {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.form textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 5px;
+}
+
+.danger {
+    background: red;
+    border: 1px solid darkred;
+    color: white;
+}
+
+.debug {
+    border: 1px solid red;
+}
