@@ -21,3 +21,14 @@ http://www.findme.beer/
 
 ### Linux Server Configuration
 You will take a baseline installation of a Linux distribution on a virtual machine and prepare it to host your web applications, to include installing updates, securing it from a number of attack vectors and installing/configuring web and database servers.
+
+## Reflections
+Completing this program was an excercise in discipline for me. I'd thought about enrolling in something like this for quite a while, but never pursued it. I signed up at the end of November on a whim and I began the coursework without taking it very seriously. I finished the first project very quickly and thought the rest of the projects would go just as fast. I was wrong, obviously, and suffered for it. In the beginning, I didn't allocate any real time for work, and the work I did do tended to be sloppy.
+
+Eventually I got tired of paying $200 per month to ignore the coursework and got serious about it. I set aside specific times to work -- Monday through Wednesday after 8pm and on the weekends while my son was napping -- and tried to be more methodical about how I approached the classes. I took better notes. I thought through my projects before beginning work on them. Things got quite a bit better.
+
+My favorite project was the neighborhood map. The lectures were structured very well and were approachable. It was entertaining. This was also the project that I felt I owned the most. Instead of just checking off items on the rubric, I set out to make something that I might use. The result was a project I was much more exicted about working on and a product I'm much prouder of.
+
+My main qualm with the program is that much of the coursework was out of date. With most of the projects, I had to deal with platform changes that had happened between course-creation and the present. Two of the projects I completed are no longer part of the course curriculum because they were out of date, and one other project was part of the curriculum when I enrolled but was removed before I got to it. It felt very shaky to me.
+
+On the whole, I'm glad I did it. Not sure it was worth the money, but I'm glad for the experience and for the credential. As always, I got out what I put in, and I think that's a fair trade.
