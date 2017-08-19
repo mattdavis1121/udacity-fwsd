@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Find Me Beer</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+        <!-- Google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Cabin|Old+Standard+TT" rel="stylesheet">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="main flex-container">
+            <!-- All non-map elements go here -->
+            <div id="sidenav" class="flex-container">
+                <div class="logo-and-controls">
+                    <div class="logo-and-controls-content">
+                        <div class="logo flex-container">
+                            <h1 class="desktop">Find Me Beer</h1>
+                            <h1 class="mobile">FMB</h1>
+                        </div>
+                        <div class="search-options">
+                            <form class="flex-container" data-bind="submit: searchLocation">
+                                <input id="address-input" type="textbox" data-bind="value: addressSearch" placeholder="Location" autofocus>
+                                <input id="address-submit" type="submit" value="Submit">
+                            </form>
+                        </div>
+                        <div class="filter-controls flex-container" data-bind="visible: locationsList().length > 0">
+                            <label for="brewery-type">Brewery type </label>
+                            <select name="brewery-type" data-bind="options: breweryTypes,
+                                                                   optionsCaption: 'Any',
+                                                                   value: typeFilter"></select>
+                            <label for="brewery-distance">Distance (miles) </label>
+                            <select name="brewery-distance" data-bind="options: distanceOptions,
+                                                                       optionsCaption: '30',
+                                                                       value: distanceFilter"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="prompt-and-errors" data-bind="visible: promptOrErrorVisible">
+                    <div class="search-prompt flex-container" data-bind="visible: promptVisible">
+                        <h3>Enter a search to see nearby breweries</h3>
+                    </div>
+                    <div class="errors flex-container" data-bind="foreach: errors">
+                        <div class="error flex-container">
+                            <div class="error-content flex-container">
+                                <h3 class="error-message" data-bind="text: $data"></h3>
+                                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="breweries" data-bind="foreach: displayBreweries">
+                    <div class="brewery" data-bind="click: $parent.locationClick, css: { 'active-brewery': isActive}, attr: { id: id }">
+                        <div class="brewery-content flex-container">
+                            <div class="brewery-details">
+                                <h2 class="brewery-name" data-bind="text: name"></h2>
+                                <span class="brewery-type" data-bind="text: type"></span>
+                            </div>
+                            <div class="drawer-button desktop">
+                                <i class="fa fa-caret-square-o-right" data-bind="click: $parent.toggleDrawer, visible: !$parent.drawerVisible()"></i>
+                                <i class="fa fa-caret-square-o-left" data-bind="click: $parent.toggleDrawer, visible: $parent.drawerVisible"></i>
+                            </div>
+                            <div class="drawer-button mobile">
+                                <i class="fa fa-caret-square-o-up" data-bind="click: $parent.toggleDrawer, visible: !$parent.drawerVisible()"></i>
+                                <i class="fa fa-caret-square-o-down" data-bind="click: $parent.toggleDrawer, visible: $parent.drawerVisible"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-container drawer" data-bind="with: currentLocation, css: {'active-brewery-drawer': drawerVisible}">
+                <div class="drawer-content flex-container">
+                    <div class="drawer-header flex-container">
+                        <h2 data-bind="text: name"></h2>
+                        <a target="_blank" data-bind="text: website, attr: { href: website }"></a>
+                    </div>
+                    <p data-bind="text: description"></p>
+                    <a target="_blank" data-bind="attr: {href: directionsLink }">Get Directions</a>
+                </div>
+            </div>
+
+            <!-- The map -->
+            <div id="map"></div>
+
+        </div>
+
+        <!-- Load Google Maps -->
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI6tCaXEOAs5tttYSE-fk1ItkfxPCTRwk&v=3&libraries=places">
+        </script>
+        <script>
+            if (typeof google == 'undefined') {
+                alert('Temporarily unable to access Google Maps. Sorry!');
+            }
+        </script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/knockout-3.4.2.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/map.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+    </body>
+</html>

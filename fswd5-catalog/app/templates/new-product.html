@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="center-form">
+    <form method="post">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name(placeholder='Cool new product') }}
+        {{ form.category_id.label }} {{ form.category_id}} <br><br>
+        {{ form.description.label }} {{ form.description(placeholder='It does all this stuff!')}}
+        <input type="submit" value="Go">
+    </form>
+</div>
+
+{% endblock %}}

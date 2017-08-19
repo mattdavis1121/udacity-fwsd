@@ -1,0 +1,221 @@
+html, body {
+    height: 100%;
+}
+
+.main {
+    height: 100%;
+    display: none;
+}
+
+.flex-container {
+    display: flex;
+}
+
+#sidenav {
+    height: 100%;
+    width: 25%;
+    background-color: #38423B;
+    color: #EDEDDC;
+    font-family: 'Cabin', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.logo-and-controls {
+    width: 100%;
+}
+
+.logo-and-controls-content {
+    margin: 0px 10px;
+    padding: 0px 10px;
+}
+
+.logo {
+    justify-content: center;
+    width: 100%;
+}
+
+.logo h1 {
+    margin: 20px 0px 10px 0px;
+}
+
+.prompt-and-errors {
+    width: 100%;
+}
+
+.search-prompt {
+    justify-content: center;
+}
+
+.errors {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.error {
+    width: 100%;
+    margin: 2px 0px;
+    background-color: #ff8585;
+    border: 3px solid #800000;
+    color: #800000;
+    font-size: 18px;
+    border-radius: 30px;
+}
+
+.error-content {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 10px;
+    padding: 0px 10px;
+}
+
+.error-content i {
+    padding: 5px;
+}
+
+
+.mobile {
+    display: none;
+}
+
+#map {
+    height: 100%;
+    width: 75%;
+    margin-left: 25%;
+    position: relative;
+}
+
+.search-options form {
+    width: 100%;
+
+}
+
+#address-input {
+    width: 80%;
+}
+
+.search-buttons {
+    display: flex;
+    width: 100%;
+}
+
+.search-buttons button {
+    width: 50%;
+}
+
+.filter-controls {
+    margin: 10px 0px 10px;
+    /*font-size: 14px;*/
+    flex-direction: column;
+}
+
+.breweries {
+    width: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.brewery {
+    /*border-top: 2px solid #20FC8F;
+    border-bottom: 2px solid #20FC8F;*/
+    width: 100%;
+    font-family: 'Old Standard TT', serif;
+    background-color: #2D2D2A;
+    cursor: pointer;
+}
+
+.active-brewery {
+    background-color: #20FC8F;
+    color: #2D2D2A;
+}
+
+.brewery-content {
+    padding: 10px;
+    margin: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*The next two rules hide all drawer toggle
+buttons except for the active brewery*/
+
+.brewery-content i {
+    visibility: hidden;
+    font-size:24px;
+    margin: 3px;
+}
+
+.active-brewery .brewery-content i{
+    visibility: visible;
+}
+
+.brewery-name {
+    font-family: 'Cabin', sans-serif;
+    margin: 8px 0px;
+}
+
+/*These two rules set the margin for the first and last list entries
+so the scroll bar isn't hanging a few pixels off either end*/
+
+.brewery:first-of-type .brewery-content{
+    margin-top: 0;
+}
+
+.brewery:last-of-type .brewery-content{
+    margin-bottom: 0;
+}
+
+.drawer {
+    height: 100%;
+    width: 50%;  /*Changing this shows/hides the drawer*/
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: 0.5s;
+    margin-left: -25%;
+    background-color: rgba(45, 45, 42, 0.68);
+    align-items: center;
+    justify-content: center;
+    top: 0;
+}
+
+.active-brewery-drawer {
+    margin-left: 25%;
+}
+
+.drawer-content {
+    margin: 5%;
+    color: #EDEDDC;
+    flex-direction: column;
+    font-family: 'Old Standard TT', serif;
+    font-size: 20px;
+}
+
+.drawer-header {
+    margin-bottom: 20px;
+    font-family: 'Cabin', sans-serif;
+    flex-direction: column;
+}
+
+.drawer-header h2 {
+    font-size: 60px;
+    margin-bottom: 0px;
+}
+
+.drawer-content a {
+    text-decoration: none;
+    color: #EDEDDC;
+}
+
+.drawer-content a:hover {
+    color: #20FC8F
+}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<ul class=grid>
+    {% for product in products %}
+    <li class="col-3">
+        <div class="category card">
+            <div class="category-image">
+                <img src="{{ url_for('static', filename='img/placeholder.png')}}">
+            </div>
+            <div class="category-meta">
+                <div class="category-desc">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.category.name }}</p>
+                </div>
+                <div class="category-actions">
+                    <a href="/edit-product/{{ product.id }}"><i class="icon-edit"></i></a>
+                    <a href="{{ url_for('delete_product', product_id=product.id)}}" onclick="return confirm('are you sure?')"><i class="icon-trash-empty"></i></a>
+                </div>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+    {% if current_user.is_authenticated %}
+    <li class="col-3">
+        <a href="/new-product/">
+            <div class="new-category category">Add a product</div>
+        </a>
+    </li>
+    {% endif %}
+</ul>
+
+{% endblock %}}

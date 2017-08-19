@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if title %}{{ title }}{% else %}Catalog{% endif %} - Udacity FSWD</title>
+    <link href="{{ url_for('static', filename='css/grid.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+
+    <!-- Fontello -->
+    <link href="{{ url_for('static', filename='fontello-528491a9/css/fontello.css')}}" rel="stylesheet">
+
+    <!-- Google sign-in -->
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <meta name="google-signin-client_id" content="339770546927-sfpsv2j6bv98vpj52b5hc856l23fn1ah.apps.googleusercontent.com">
+    <script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+
+        var postdata = 'idtoken=' + googleUser.getAuthResponse().id_token + '&id=' + profile.getId() + '&name=' + profile.getName() + '&email=' + profile.getEmail();
+
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/login/');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+          console.log('reloading page')
+          location.reload();
+        };
+        xhr.send(postdata);
+
+        }
+    </script>
+</head>
+<body>
+<aside class="col-2">
+    <div class="fix-wrapper left-rail col-2">
+        <section id="user-info">
+            <div id="avatar">
+            </div>
+            <div id="user-details">
+                {% if current_user.is_authenticated %}
+                <h3>{{current_user.name}}</h3>
+                <p>Member since 2017</p>
+                <a href="#" onclick="signOut();">Sign out</a>
+                <script>
+                  function signOut() {
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                      console.log('redirect to logout')
+                      window.location = "/logout/"
+                    });
+                  }
+
+                  function onLoad() {
+                    gapi.load('auth2', function() {
+                      gapi.auth2.init();
+                    });
+                  }
+                </script>
+                {% else %}
+                <h3>LOGIN</h3>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                {% endif %}
+
+            </div>
+        </section>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </div>
+</aside>
+<section id="header-and-main" class="col-10">
+    <header id="app-header">
+        <h1 id="app-name">Catalog</h1>
+    </header>
+    <main id="app-main">
+        {% block content %}
+        {% endblock %}
+    </main>
+</section>
+</body>
+</html>
